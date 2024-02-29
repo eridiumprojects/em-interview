@@ -14,5 +14,6 @@ public interface PhoneJpaRepository extends JpaRepository<Phone, Long> {
     Boolean existsByNumber(String address);
 
     Boolean existsByClient(Client client);
+
     void deleteByNumber(String number);
 }

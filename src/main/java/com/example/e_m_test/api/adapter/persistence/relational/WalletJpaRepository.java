@@ -8,7 +8,10 @@ import java.util.Optional;
 
 public interface WalletJpaRepository extends JpaRepository<Wallet, Long> {
     Optional<Wallet> findByClient(Client client);
+
     Optional<Wallet> findByClientId(Long id);
+
     Optional<Wallet> findByClientUsername(String username);
+
     Boolean existsByClient(Client client);
 }

@@ -9,6 +9,7 @@ public class EmailNotFoundException extends RuntimeException {
     public EmailNotFoundException(String address) {
         super(ERROR_MESSAGE_EMAIL.formatted(address));
     }
+
     public EmailNotFoundException(Client client) {
         super(ERROR_MESSAGE_CLIENT.formatted(client));
     }

@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -16,19 +15,9 @@ public class WalletRepositoryImpl implements WalletRepository {
     private final WalletJpaRepository walletJpaRepository;
 
     @Override
-    public Wallet findById(Long id) {
-        return walletJpaRepository.findById(id).orElseThrow(() -> new WalletNotFoundException(id));
-    }
-
-    @Override
     public Wallet findByClient(Client client) {
         return walletJpaRepository.findByClient(client)
                 .orElseThrow(() -> new WalletNotFoundException(client.toString()));
-    }
-
-    @Override
-    public boolean existsByClient(Client client) {
-        return walletJpaRepository.existsByClient(client);
     }
 
     @Override

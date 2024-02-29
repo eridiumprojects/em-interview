@@ -4,7 +4,6 @@ import com.example.e_m_test.api.domain.security.Device;
 import com.example.e_m_test.api.domain.security.RefreshToken;
 import com.example.e_m_test.api.domain.security.Role;
 import com.example.e_m_test.api.domain.wallet.Wallet;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -60,6 +59,4 @@ public class Client {
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "client", orphanRemoval = true)
     private List<Device> devices;
-
-
 }

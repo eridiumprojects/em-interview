@@ -7,7 +7,5 @@ import org.mapstruct.Mapper;
 public interface PhoneDomainMapper {
     Phone mapToDomain(AddClientPhoneRequestDto source);
 
-    Phone mapToDomain(UpdateClientPhoneRequestDto source);
-
     Phone mapToDomain(DeleteClientPhoneRequestDto source);
 }

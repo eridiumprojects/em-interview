@@ -31,5 +31,4 @@ public class ClientRepositoryImpl implements ClientRepository {
     public Client save(Client client) {
         return clientJpaRepository.save(client);
     }
-
 }

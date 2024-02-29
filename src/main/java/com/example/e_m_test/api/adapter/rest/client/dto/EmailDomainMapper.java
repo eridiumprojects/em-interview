@@ -6,7 +6,6 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface EmailDomainMapper {
     Email mapToDomain(AddClientEmailRequestDto source);
-    Email mapToDomain(UpdateClientEmailRequestDto source);
-    Email mapToDomain(DeleteClientEmailRequestDto source);
 
+    Email mapToDomain(DeleteClientEmailRequestDto source);
 }

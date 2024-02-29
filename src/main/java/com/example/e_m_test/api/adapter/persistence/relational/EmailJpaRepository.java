@@ -10,8 +10,12 @@ import java.util.Optional;
 @Repository
 public interface EmailJpaRepository extends JpaRepository<Email, Long> {
     Optional<Email> findByAddress(String address);
+
     Optional<Email> findByClient(Client client);
+
     Boolean existsByAddress(String address);
+
     Boolean existsByClient(Client client);
+
     void deleteByAddress(String address);
 }

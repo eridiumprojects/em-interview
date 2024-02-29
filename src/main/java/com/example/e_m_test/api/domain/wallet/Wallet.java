@@ -2,14 +2,11 @@ package com.example.e_m_test.api.domain.wallet;
 
 import com.example.e_m_test.api.domain.client.Client;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 
 @Data
 @Builder(toBuilder = true)

@@ -19,11 +19,6 @@ public class DeviceRepositoryImpl implements DeviceRepository {
     }
 
     @Override
-    public Optional<Device> findById(Long id) {
-        return deviceJpaRepository.findById(id);
-    }
-
-    @Override
     public Device save(Device device) {
         return deviceJpaRepository.save(device);
     }

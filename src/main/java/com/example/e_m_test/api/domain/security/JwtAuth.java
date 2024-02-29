@@ -1,6 +1,5 @@
 package com.example.e_m_test.api.domain.security;
 
-import com.example.e_m_test.api.domain.security.ERole;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
