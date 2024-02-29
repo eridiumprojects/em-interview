@@ -20,4 +20,4 @@ jobs:
           distribution: 'temurin'
 
       - name: Maven build jar
-        run: mvn clean test
+        run: mvn clean package
