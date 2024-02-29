@@ -4,7 +4,6 @@ pom:
 logging:
   level:
     root: info
-    com.anst.sd.api: DEBUG
 
 server:
   error:
@@ -24,9 +23,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
   server:
     error:
       include-message: always
