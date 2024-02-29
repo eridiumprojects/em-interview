@@ -24,9 +24,7 @@ public class SignupRequestDto {
     String password;
     @PositiveOrZero
     Long initialBalance;
-    @NotBlank
     List<Phone> phones;
-    @NotBlank
     List<Email> emails;
     @NotBlank
     String birth;

@@ -25,10 +25,10 @@ public class RegisterClientUseCase implements RegisterClientInBound {
     private final EmailRepository emailRepository;
     private final PhoneRepository phoneRepository;
 
-    @Override
     @Transactional
+    @Override
     public Client register(Client client) {
-        log.info("User registration processing for username {}", client.getUsername());
+        log.info("Client requested for registration process with id: {}", client.getId());
         validateClient(client);
         client.setPassword(encoder.encode(client.getPassword()));
         clientRepository.save(client);
@@ -37,6 +37,7 @@ public class RegisterClientUseCase implements RegisterClientInBound {
     }
 
     private void validateClient(Client client) {
+        log.info("Starting to validate the incoming client with id: {}", client.getId());
         List<String> errors = new ArrayList<>();
         List<Email> emails = new ArrayList<>(client.getEmails());
         List<Phone> phones = new ArrayList<>(client.getPhones());

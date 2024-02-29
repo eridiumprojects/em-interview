@@ -10,6 +10,7 @@ import com.example.e_m_test.api.domain.client.Email;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -18,8 +19,10 @@ public class UpdateClientEmailUseCase implements UpdateClientEmailInBound {
     private final ClientRepository clientRepository;
     private final EmailRepository emailRepository;
 
+    @Transactional
     @Override
     public Client update(Long id, UpdateClientEmailRequestDto email) {
+        log.info("Client with id: {} processed to update his email on {}", id, email.getNewEmail());
         Client client = clientRepository.getById(id);
         Email target = emailRepository.findByAddress(email.getOldEmail());
 

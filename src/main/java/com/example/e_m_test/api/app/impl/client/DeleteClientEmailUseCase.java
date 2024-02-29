@@ -21,6 +21,7 @@ public class DeleteClientEmailUseCase implements DeleteClientEmailInBound {
     @Transactional
     @Override
     public Client delete(Long id, Email email) {
+        log.info("Client wants to delete his email: {}", email.getAddress());
         Client client = clientRepository.getById(id);
         int valueOfClientEmails = client.getEmails().size();
 

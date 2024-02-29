@@ -21,6 +21,7 @@ public class DeleteClientPhoneUseCase implements DeleteClientPhoneInBound {
     @Transactional
     @Override
     public Client delete(Long id, Phone phone) {
+        log.info("Client wants to delete his number: {}", phone.getNumber());
         Client client = clientRepository.getById(id);
         int valueOfClientPhones = client.getPhones().size();
 

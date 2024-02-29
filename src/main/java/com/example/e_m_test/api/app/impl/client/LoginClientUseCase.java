@@ -33,8 +33,8 @@ public class LoginClientUseCase implements LoginClientInBound {
     private final DeviceRepository deviceRepository;
     private final WalletRepository walletRepository;
 
-    @Override
     @Transactional
+    @Override
     public JwtResponse login(String username, String password, UUID deviceToken) {
         log.info("Logging user with username {}", username);
         Client client = clientRepository.getByUsername(username);

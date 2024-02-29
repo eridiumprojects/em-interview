@@ -19,6 +19,7 @@ public class AddClientEmailUseCase implements AddClientEmailInBound {
 
     @Override
     public Client add(Long id, Email email) {
+        log.info("Client with id: {} wants to add new email: {}", id, email.getAddress());
         if (emailRepository.existsByAddress(email.getAddress())) {
             throw new EmailValidationException();
         }

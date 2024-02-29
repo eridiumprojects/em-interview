@@ -16,21 +16,18 @@ import java.util.List;
 public class IncreaseBalanceDelegate {
     private final WalletRepository walletRepository;
 
-    @Scheduled(fixedRate = 60000)
     @Transactional
+    @Scheduled(fixedRate = 60000)
     public void increaseWalletBalance() {
         List<Wallet> wallets = walletRepository.findAll();
         for (Wallet wallet : wallets) {
             double newBalance = wallet.getCurrentBalance() * 1.05;
             double maxAllowedBalance = wallet.getInitialBalance() * 2.07;
             if (newBalance > maxAllowedBalance) {
-                log.info("Wallet has reached the maximum value");
                 newBalance = maxAllowedBalance;
             }
             wallet.setCurrentBalance((long) newBalance);
             walletRepository.save(wallet);
-            log.info("Wallet increased on 5%");
         }
     }
-
 }

@@ -22,4 +22,9 @@ public class DeviceRepositoryImpl implements DeviceRepository {
     public Device save(Device device) {
         return deviceJpaRepository.save(device);
     }
+
+    @Override
+    public Optional<Device> findById(Long id) {
+        return deviceJpaRepository.findById(id);
+    }
 }

@@ -20,6 +20,7 @@ public class TransferBalanceUseCase implements TransferBalanceInBound {
     @Transactional
     @Override
     public Wallet transfer(Long clientId, TransferRequestDto wallet) {
+        log.info("Client with id {} wants to do transfer to another client", clientId);
         Wallet senderWallet = walletRepository.findByClientId(clientId);
         if (senderWallet.getCurrentBalance() < wallet.getAmount()) {
             throw new RuntimeException();

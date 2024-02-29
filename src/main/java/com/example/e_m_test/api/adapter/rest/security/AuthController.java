@@ -7,6 +7,7 @@ import com.example.e_m_test.api.app.api.client.LoginClientInBound;
 import com.example.e_m_test.api.app.api.client.RegisterClientException;
 import com.example.e_m_test.api.app.api.client.RegisterClientInBound;
 import com.example.e_m_test.api.app.api.security.JwtResponse;
+import com.example.e_m_test.api.app.api.security.RefreshTokenInBound;
 import com.example.e_m_test.api.domain.client.Client;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public class AuthController {
     private final JwtResponseDtoMapper jwtResponseDtoMapper;
     private final LoginClientInBound loginClientInBound;
     private final RegisterClientInBound registerClientInBound;
-
+    private final RefreshTokenInBound refreshTokenInBound;
 
     @PostMapping("/signin")
     public ResponseEntity<JwtResponseDto> loginClient(@Valid @RequestBody LoginRequestDto request) {
@@ -47,5 +48,11 @@ public class AuthController {
         }
         Client registeredClient = registerClientInBound.register(signupRequestDomainMapper.mapToDomain(signUpRequestDto));
         return ResponseEntity.ok(clientDtoMapper.mapToDto(registeredClient));
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<JwtResponseDto> refresh(@Valid @RequestBody RefreshRequestDto request) {
+        JwtResponse response = refreshTokenInBound.refresh(request.getRefreshToken());
+        return ResponseEntity.ok(jwtResponseDtoMapper.mapToDto(response));
     }
 }

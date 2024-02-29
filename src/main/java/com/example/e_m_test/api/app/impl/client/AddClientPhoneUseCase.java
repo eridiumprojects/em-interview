@@ -19,6 +19,7 @@ public class AddClientPhoneUseCase implements AddClientPhoneInBound {
 
     @Override
     public Client add(Long id, Phone phone) {
+        log.info("Client with id: {} wants to add new number: {}", id, phone.getNumber());
         if (phoneRepository.existsByNumber(phone.getNumber())) {
             throw new PhoneValidationException();
         }

@@ -1,7 +1,7 @@
 package com.example.e_m_test.api.adapter.rest.security.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +19,6 @@ public class LoginRequestDto {
     String username;
     @NotBlank
     String password;
-    @NotNull
+    @JsonIgnore
     UUID deviceToken;
 }
