@@ -24,6 +24,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    properties:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
   server:
     error:
       include-message: always
