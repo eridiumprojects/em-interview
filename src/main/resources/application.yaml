@@ -1,0 +1,43 @@
+pom:
+  propertiesFileName: properties-pom.yaml
+
+logging:
+  level:
+    root: info
+    com.anst.sd.api: DEBUG
+
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_param
+    include-exception: false
+  servlet:
+    context-path: /api
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: postgres
+    username: postgres
+    url: jdbc:postgresql://localhost:5433/
+  jpa:
+    hibernate:
+      ddl-auto: update
+  server:
+    error:
+      include-message: always
+  data:
+    redis:
+      url: redis://localhost:6379
+
+security:
+  jwt:
+    block-valid-access: true
+    storage: accessStorage
+    access:
+      secret: accessSecret
+      expiration: 10m
+    refresh:
+      secret: refreshSecret
+      expiration: 168h
