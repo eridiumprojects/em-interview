@@ -1,7 +1,9 @@
 package com.example.e_m_test.api.adapter.rest.wallet.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 @Data

@@ -1,6 +1,5 @@
 package com.example.e_m_test.api.adapter.persistence.relational;
 
-import com.example.e_m_test.api.app.api.client.ClientNotFoundException;
 import com.example.e_m_test.api.app.api.client.ClientRepository;
 import com.example.e_m_test.api.domain.client.Client;
 import lombok.RequiredArgsConstructor;

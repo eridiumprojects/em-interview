@@ -1,7 +1,6 @@
 package com.example.e_m_test.api.app.api.client;
 
 import com.example.e_m_test.api.app.api.ObjectNotFoundException;
-import com.example.e_m_test.api.domain.client.Client;
 
 public class PhoneNotFoundException extends ObjectNotFoundException {
     private static final String ERROR_MESSAGE_PHONE = "Phone with number %s was not found";

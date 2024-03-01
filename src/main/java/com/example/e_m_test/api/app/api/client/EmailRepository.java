@@ -6,6 +6,7 @@ public interface EmailRepository {
     Email findByAddress(String address);
 
     boolean existsByAddress(String address);
+
     boolean existsByAddressAndClientId(String address, Long clientId);
 
     Email save(Email email);

@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TransferRequestDto {
     @NotNull
-    @Size(message = "Username must be greater than 4 characters and lower than 12 characters!", min = 4,max = 12)
+    @Size(message = "Username must be greater than 4 characters and lower than 12 characters!", min = 4, max = 12)
     String recipientUsername;
     @PositiveOrZero(message = "Balance must be greater or equals 0")
     Long amount;

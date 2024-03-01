@@ -8,5 +8,4 @@ class EMApplicationTest {
     @Test
     void test() {
     }
-
 }

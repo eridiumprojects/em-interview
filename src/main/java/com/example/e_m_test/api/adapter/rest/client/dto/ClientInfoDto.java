@@ -3,7 +3,9 @@ package com.example.e_m_test.api.adapter.rest.client.dto;
 import com.example.e_m_test.api.domain.client.Email;
 import com.example.e_m_test.api.domain.client.Phone;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;

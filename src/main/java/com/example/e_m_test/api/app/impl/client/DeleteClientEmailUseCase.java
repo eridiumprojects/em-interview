@@ -2,7 +2,10 @@ package com.example.e_m_test.api.app.impl.client;
 
 import com.example.e_m_test.api.app.api.ObjectAlreadyExistException;
 import com.example.e_m_test.api.app.api.ObjectNotFoundException;
-import com.example.e_m_test.api.app.api.client.*;
+import com.example.e_m_test.api.app.api.client.ClientNotFoundException;
+import com.example.e_m_test.api.app.api.client.ClientRepository;
+import com.example.e_m_test.api.app.api.client.DeleteClientEmailInBound;
+import com.example.e_m_test.api.app.api.client.EmailRepository;
 import com.example.e_m_test.api.domain.client.Client;
 import com.example.e_m_test.api.domain.client.Email;
 import lombok.RequiredArgsConstructor;

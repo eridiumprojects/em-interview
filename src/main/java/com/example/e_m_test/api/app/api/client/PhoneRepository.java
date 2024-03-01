@@ -6,6 +6,7 @@ public interface PhoneRepository {
     Phone findByNumber(String number);
 
     boolean existsByNumber(String number);
+
     boolean existsByNumberAndClientId(String number, Long clientId);
 
     Phone save(Phone phone);

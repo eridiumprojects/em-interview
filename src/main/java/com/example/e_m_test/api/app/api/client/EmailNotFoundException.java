@@ -1,7 +1,6 @@
 package com.example.e_m_test.api.app.api.client;
 
 import com.example.e_m_test.api.app.api.ObjectNotFoundException;
-import com.example.e_m_test.api.domain.client.Client;
 
 public class EmailNotFoundException extends ObjectNotFoundException {
     private static final String ERROR_MESSAGE_EMAIL = "Email with address %s was not found";

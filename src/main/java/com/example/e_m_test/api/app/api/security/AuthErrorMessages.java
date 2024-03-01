@@ -2,8 +2,6 @@ package com.example.e_m_test.api.app.api.security;
 
 public class AuthErrorMessages {
     public static final String INVALID_PASSWORD = "Invalid password";
-    public static final String USER_DOESNT_EXISTS = "User doesn't exist";
-    public static final String USER_NOT_FOUND = "There is no such user";
     public static final String DEVICE_NOT_FOUND = "Device not found";
     public static final String INVALID_REFRESH_TOKEN = "Invalid refresh token";
     public static final String REFRESH_TOKEN_DOESNT_EXISTS = "Refresh token doesn't exist";

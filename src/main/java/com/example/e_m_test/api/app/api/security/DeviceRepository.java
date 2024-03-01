@@ -9,5 +9,6 @@ public interface DeviceRepository {
     Optional<Device> findByDeviceToken(UUID token);
 
     Device save(Device device);
+
     Optional<Device> findById(Long id);
 }
