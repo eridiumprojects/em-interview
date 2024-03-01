@@ -16,12 +16,10 @@ public class JwtAuth implements Authentication {
     private boolean authenticated;
     private String username;
     private Long clientId;
-    private Long deviceId;
-    private ERole role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(role);
+        return Collections.singleton(null);
     }
 
     @Override

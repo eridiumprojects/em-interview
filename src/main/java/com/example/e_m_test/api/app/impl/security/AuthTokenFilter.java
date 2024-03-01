@@ -42,7 +42,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
         if (claims != null) {
             RMapCache<Long, String> map = redissonClient.getMapCache(jwtStorageName);
-            if (token.equals(map.get(Long.parseLong(claims.getDeviceId())))) {
+            if (token.equals(map.get(Long.parseLong(claims.getUserId())))) {
                 setSecurityContext(claims);
             } else {
                 throw new AuthException("Access Token doesn't refer to this user");
@@ -57,8 +57,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 JwtAuth.builder()
                         .username(claims.getUsername())
                         .clientId(Long.parseLong(claims.getUserId()))
-                        .deviceId(Long.parseLong(claims.getDeviceId()))
-                        .role(claims.getRole())
                         .authenticated(true)
                         .build();
         SecurityContextHolder.getContext().setAuthentication(authInfo);

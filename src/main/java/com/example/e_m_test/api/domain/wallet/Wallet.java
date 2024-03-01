@@ -27,13 +27,4 @@ public class Wallet {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @JsonBackReference
     private Client client;
-
-    @Override
-    public String toString() {
-        return "Wallet{" +
-                "id=" + id +
-                ", initialBalance=" + initialBalance +
-                ", currentBalance=" + currentBalance +
-                '}';
-    }
 }

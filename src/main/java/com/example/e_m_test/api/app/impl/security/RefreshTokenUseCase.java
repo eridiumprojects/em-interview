@@ -1,7 +1,10 @@
 package com.example.e_m_test.api.app.impl.security;
 
 import com.example.e_m_test.api.app.api.client.ClientRepository;
-import com.example.e_m_test.api.app.api.security.*;
+import com.example.e_m_test.api.app.api.security.AuthErrorMessages;
+import com.example.e_m_test.api.app.api.security.JwtResponse;
+import com.example.e_m_test.api.app.api.security.RefreshTokenInBound;
+import com.example.e_m_test.api.app.api.security.RefreshTokenRepository;
 import com.example.e_m_test.api.domain.security.RefreshToken;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class RefreshTokenUseCase implements RefreshTokenInBound {
     private final JwtService jwtService;
     private final ClientRepository clientRepository;
-    private final DeviceRepository deviceRepository;
     private final RefreshTokenRepository refreshTokenRepository;
 
     @Override
@@ -27,9 +29,6 @@ public class RefreshTokenUseCase implements RefreshTokenInBound {
 
         var claims = jwtService.getRefreshClaims(refreshToken);
         var client = clientRepository.getById(Long.parseLong(claims.getUserId()));
-        var device = deviceRepository.findById(Long.parseLong(claims.getDeviceId()))
-                .orElseThrow(() -> new AuthException(AuthErrorMessages.DEVICE_NOT_FOUND));
-        var role = claims.getRole();
 
         var currentRefreshToken = refreshTokenRepository.findByToken(refreshToken);
         if (currentRefreshToken.isEmpty()) {
@@ -37,11 +36,7 @@ public class RefreshTokenUseCase implements RefreshTokenInBound {
         }
         refreshTokenRepository.deleteById(currentRefreshToken.get().getId());
 
-        if (!jwtService.validateAccessTokenLifetime(device.getId())) {
-            throw new AuthException(AuthErrorMessages.SUSPICIOUS_ACTIVITY);
-        }
-
-        var tokens = jwtService.generateAccessRefreshTokens(client.get().getUsername(), client.get().getId(), device.getId(), role);
+        var tokens = jwtService.generateAccessRefreshTokens(client.get().getUsername(), client.get().getId());
         var newRefresh = new RefreshToken();
         newRefresh.setClient(client.get());
         newRefresh.setToken(tokens.getRefreshToken());

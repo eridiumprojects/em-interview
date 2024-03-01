@@ -34,7 +34,7 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<JwtResponseDto> loginClient(@Valid @RequestBody LoginRequestDto request) {
         JwtResponse response = loginClientInBound.login(
-                request.getUsername(), request.getPassword(), request.getDeviceToken());
+                request.getUsername(), request.getPassword());
         return ResponseEntity.ok(jwtResponseDtoMapper.mapToDto(response));
     }
 

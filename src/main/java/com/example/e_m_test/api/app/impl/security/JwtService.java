@@ -2,7 +2,6 @@ package com.example.e_m_test.api.app.impl.security;
 
 import com.example.e_m_test.api.app.api.security.AuthErrorMessages;
 import com.example.e_m_test.api.app.api.security.JwtResponse;
-import com.example.e_m_test.api.domain.security.ERole;
 import com.example.e_m_test.api.domain.security.JwtAuth;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
@@ -20,21 +19,16 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import static java.util.Optional.ofNullable;
-
 @Log4j2
 @Component
 public class JwtService {
     public static final String USER_ID_CLAIM = "userId";
-    public static final String DEVICE_ID_CLAIM = "deviceId";
-    public static final String ROLE_ID_CLAIM = "role";
     private final String jwtAccessSecret;
     private final String jwtRefreshSecret;
     private final String jwtStorageName;
     private final Duration accessTokenExpiration;
     private final Duration refreshTokenExpiration;
     private final RedissonClient redissonClient;
-    private final Boolean blockRefreshValidAccessToken;
 
     public JwtService(
             @Value("${security.jwt.access.secret}") String jwtAccessSecret,
@@ -42,16 +36,13 @@ public class JwtService {
             @Value("${security.jwt.storage}") String jwtStorageName,
             @Value("${security.jwt.access.expiration}") Duration accessTokenExpiration,
             @Value("${security.jwt.refresh.expiration}") Duration refreshTokenExpiration,
-            RedissonClient redissonClient,
-            @Value("${security.jwt.block-valid-access}") Boolean blockRefreshValidAccessToken
-    ) {
+            RedissonClient redissonClient) {
         this.jwtAccessSecret = jwtAccessSecret;
         this.jwtRefreshSecret = jwtRefreshSecret;
         this.jwtStorageName = jwtStorageName;
         this.accessTokenExpiration = accessTokenExpiration;
         this.refreshTokenExpiration = refreshTokenExpiration;
         this.redissonClient = redissonClient;
-        this.blockRefreshValidAccessToken = blockRefreshValidAccessToken;
     }
 
     public JwtAuth getJwtAuth() {
@@ -63,32 +54,20 @@ public class JwtService {
         }
     }
 
-    public boolean validateAccessTokenLifetime(Long deviceId) {
-        if (blockRefreshValidAccessToken) {
-            RMapCache<Long, String> map = redissonClient.getMapCache(jwtStorageName);
-            String curAccessToken = map.get(deviceId);
-            if (curAccessToken != null && validateAccessToken(map.get(deviceId))) {
-                map.remove(deviceId);
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public JwtResponse generateAccessRefreshTokens(String username, Long userId, Long deviceId, ERole role) {
+    public JwtResponse generateAccessRefreshTokens(String username, Long userId) {
         RMapCache<Long, String> map = redissonClient.getMapCache(jwtStorageName);
-        String newAccessToken = generateAccessToken(username, userId, deviceId, role);
-        map.put(deviceId,
+        String newAccessToken = generateAccessToken(username, userId);
+        map.put(userId,
                 newAccessToken,
                 accessTokenExpiration.toMinutes(),
                 TimeUnit.MINUTES);
 
         return new JwtResponse(
                 newAccessToken,
-                generateRefreshToken(username, userId, deviceId, role));
+                generateRefreshToken(username, userId));
     }
 
-    public String generateAccessToken(String username, Long userId, Long deviceId, ERole role) {
+    public String generateAccessToken(String username, Long userId) {
         final Instant accessExpirationInstant =
                 Instant.now().plus(accessTokenExpiration);
         final Date accessExpiration = Date.from(accessExpirationInstant);
@@ -97,20 +76,16 @@ public class JwtService {
                 .signWith(SignatureAlgorithm.HS512, jwtAccessSecret)
                 .setSubject(username)
                 .claim(USER_ID_CLAIM, userId.toString())
-                .claim(DEVICE_ID_CLAIM, deviceId.toString())
-                .claim(ROLE_ID_CLAIM, role)
                 .compact();
     }
 
-    public String generateRefreshToken(String username, Long userId, Long deviceId, ERole role) {
+    public String generateRefreshToken(String username, Long userId) {
         final Instant refreshExpirationInstant = Instant.now().plus(refreshTokenExpiration);
         final Date refreshExpiration = Date.from(refreshExpirationInstant);
         return Jwts.builder()
                 .setSubject(username)
                 .setExpiration(refreshExpiration)
                 .claim(USER_ID_CLAIM, userId.toString())
-                .claim(DEVICE_ID_CLAIM, deviceId.toString())
-                .claim(ROLE_ID_CLAIM, role)
                 .signWith(SignatureAlgorithm.HS512, jwtRefreshSecret)
                 .compact();
     }
@@ -159,15 +134,6 @@ public class JwtService {
 
         public String getUserId() {
             return claims.get(USER_ID_CLAIM, String.class);
-        }
-
-        public String getDeviceId() {
-            return claims.get(DEVICE_ID_CLAIM, String.class);
-        }
-
-        public ERole getRole() {
-            return ofNullable(claims.get(ROLE_ID_CLAIM, String.class))
-                    .map(ERole::valueOf).orElse(null);
         }
 
         public String getUsername() {

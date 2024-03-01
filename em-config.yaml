@@ -47,7 +47,7 @@ resources:
       mimeType: application/json
       text: >-
         {
-        	"_comment": "Для обновления токенов нужно вставить ниже refreshToken, который дается при входе в систему, но, главное условие - нужно заходить в аккаунт добавляя UUID deviceToken в тело запроса",
+        	"_comment": "Для обновления токенов нужно вставить ниже refreshToken, который дается при входе в систему",
         	"refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2huX2RvZTEyMzQ1NiIsImV4cCI6MTcwOTg0OTk1MSwidXNlcklkIjoiMSIsImRldmljZUlkIjoiMSIsInJvbGUiOiJVU0VSIn0.exWQJ7mh6bkjCebO7sSiUq9QhGAOoRYOzS_r1Z7Motq5yKsFyqpwg91bTLdMmG6wyGawP_Y67C_OB5Z6CJdtag"
         }
     parameters: []
@@ -379,7 +379,6 @@ resources:
         {
         	"username": "eridium",
         	"password": "eridium123",
-        	"_deviceToken": "90cc66a2-6d25-4edc-90e7-245fa209a22e"
         }
     parameters: []
     headers:

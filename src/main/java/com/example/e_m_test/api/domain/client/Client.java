@@ -1,8 +1,6 @@
 package com.example.e_m_test.api.domain.client;
 
-import com.example.e_m_test.api.domain.security.Device;
 import com.example.e_m_test.api.domain.security.RefreshToken;
-import com.example.e_m_test.api.domain.security.Role;
 import com.example.e_m_test.api.domain.wallet.Wallet;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -12,9 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Builder(toBuilder = true)
@@ -49,14 +45,7 @@ public class Client {
     @JoinColumn(name = "wallet_id", referencedColumnName = "id")
     @JsonManagedReference
     private Wallet wallet;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "client_role", joinColumns = @JoinColumn(name = "client_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "client", orphanRemoval = true)
     private List<RefreshToken> tokens;
-    @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client", orphanRemoval = true)
-    private List<Device> devices;
 }
