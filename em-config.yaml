@@ -1,0 +1,484 @@
+_type: export
+__export_format: 4
+__export_date: 2024-03-01T19:58:43.500Z
+__export_source: insomnia.desktop.app:v8.6.1
+resources:
+  - _id: req_6bbd49f5caa845cd89e212a1d2d437d3
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709316443156
+    created: 1709316420227
+    url: "{{ _.baseUrl }}/api/swagger-ui/index.html#/"
+    name: Swagger
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1709316420227
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    parentId: null
+    modified: 1709323026559
+    created: 1709323026559
+    name: em_test.yaml
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: req_1b5ef0cbb5ac44b4a2c0ffaf862032f8
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709323047353
+    created: 1709244975918
+    url: "{{ _.baseUrl }}/api/auth/refresh"
+    name: Refreshing token
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"_comment": "Для обновления токенов нужно вставить ниже refreshToken, который дается при входе в систему",
+        	"refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2huX2RvZTEyMzQ1NiIsImV4cCI6MTcwOTg0OTk1MSwidXNlcklkIjoiMSIsImRldmljZUlkIjoiMSIsInJvbGUiOiJVU0VSIn0.exWQJ7mh6bkjCebO7sSiUq9QhGAOoRYOzS_r1Z7Motq5yKsFyqpwg91bTLdMmG6wyGawP_Y67C_OB5Z6CJdtag"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication:
+      type: bearer
+      token: ""
+    metaSortKey: -1709244975918
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_329efe428fbb49c6bd406ab64d8929f3
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709313324848
+    created: 1709233000568
+    url: "{{ _.baseUrl }}/api/wallet/transfer"
+    name: Transfer to another client
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"_comment": "Зарегистрируйте нового пользователя и вставьте его юзернейм в recipientUsername",
+        	"recipientUsername": "anotherClient",
+        	"amount": 100
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1709233000568
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4a0c2878643041cf9552212495aaaaf8
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709317173014
+    created: 1709220805681
+    url: "{{ _.baseUrl
+      }}/api/clients/search?name=Anton&phone=+79081503325&email=pestrikv1337@gm\
+      ail.com&page=1&size=10"
+    name: Search clients by filters
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"_comment": "Доступные фильтры: birth, phone, name, email"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1709220805681
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1c21f191284a42aaae7ffe147a22bebe
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709313278895
+    created: 1709215467278
+    url: "{{ _.baseUrl }}/api/clients/client/delete-phone"
+    name: Delete client phone number
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"number": "+79081503325"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1709203400719
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1c81086df32b4a078069cc3f7304d32f
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709313258732
+    created: 1709215490928
+    url: "{{ _.baseUrl }}/api/clients/client/delete-email"
+    name: Delete client email
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"address": "pestrikv1337@gmail.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1709203053697.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_73702621069e488b86a90a807aa83e2a
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709313239802
+    created: 1709204666138
+    url: "{{ _.baseUrl }}/api/clients/client/change-phone"
+    name: Change client phone number
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"oldPhone": "+79081503324",
+        	"newPhone": "+77017141660"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1709189223018.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c3971127ab4f4fbf86f40f030dc193d4
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709313197781
+    created: 1709204676659
+    url: "{{ _.baseUrl }}/api/clients/client/change-email"
+    name: Change client email
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"oldEmail": "pestirkv13777@gmail.com",
+        	"newEmail": "antonpestrikov@gmail.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1709177127447
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d5f58b020ddf49e3a1624c11c591798a
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709313188238
+    created: 1709201318590
+    url: "{{ _.baseUrl }}/api/clients/client/add-email"
+    name: Add client email
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"address": "oluwu123@gmail.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1709171079661.25
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7d5b9fbee12a4314b1ed8bdc6508deb2
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709313169409
+    created: 1709204094762
+    url: "{{ _.baseUrl }}/api/clients/client/add-phone"
+    name: Add client phone number
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"number": "+77778127015"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1709165031875.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3d54e622f09641329af55d1e45f64979
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709237299448
+    created: 1709152936304
+    url: "{{ _.baseUrl }}/api/clients/client"
+    name: Get client details
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1709152936304
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_dd1ef7378d744c5f98ec2d5c0b53bf10
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709323073039
+    created: 1709149590349
+    url: "{{ _.baseUrl }}/api/auth/signin"
+    name: Sign in
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "eridium",
+        	"password": "eridium123"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1709149590349
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9667a04cbdb84b369f20a0c29fdb7394
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709316885763
+    created: 1709149495132
+    url: "{{ _.baseUrl }}/api/auth/signup"
+    name: Sign up
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        
+        {
+          "firstName": "Anton",
+          "lastName": "Pestrikov",
+          "patronymic": "Sergeevich",
+          "username": "eridium",
+          "password": "eridium123",
+          "initialBalance": 1000,
+          "phones": [
+            {
+              "number": "+79081503324"
+            },
+            {
+              "number": "+79081503325"
+            }
+          ],
+          "emails": [
+            {
+              "address": "pestrikv1337@gmail.com"
+            },
+            {
+              "address": "pestrikv123@gmail.com"
+            }
+          ],
+          "birth": "2003-22-02"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1709149495132
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_d91de85078dd4ff1b14700138e6614ec
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709317218949
+    created: 1709149480554
+    name: Base Environment
+    data:
+      baseUrl: http://localhost:8080
+      accessToken: accessToken_needs_here
+    dataPropertyOrder:
+      "&":
+        - baseUrl
+        - accessToken
+    color: null
+    isPrivate: false
+    metaSortKey: 1709149480554
+    _type: environment
+  - _id: jar_d0718513e998438c88a0d3b7c2f43df4
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709149480554
+    created: 1709149480554
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_82bdf9d5936a4b6fa1762f1284c6d48a
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709323026572
+    created: 1709323026570
+    fileName: em_test.yaml
+    contents: ""
+    contentType: yaml
+    _type: api_spec
