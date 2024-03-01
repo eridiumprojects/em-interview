@@ -13,8 +13,10 @@
 
 1. Используйте ручку `Sign up` и отправьте тестовый запрос на сервер.
 2. Далее, тыкаем в эндпоинт `Sign In` и отправляем данные нового пользователя.
-3. В Response придут Access и Refresh токены (JWT), копируем Access Token и находим в приложении `Base Environment`, куда вставляем Access токен.
+3. В Response придут Access и Refresh токены (JWT), копируем Access Token и находим в приложении `Base Environment`, куда вставляем Access токен (см. рис).
 4. Готово. Любыми другими эндпоинтами можно пользоваться.
+
+![insomnia_plot1](https://github.com/eridiumprojects/em-interview/blob/master/insomnia_plot1.png)
 
 P.S Access token внутри системы действует 30 минут, по истечению этого времени клиенту придется войти в систему заново.
 
