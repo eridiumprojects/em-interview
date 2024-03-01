@@ -36,7 +36,7 @@ security:
     storage: accessStorage
     access:
       secret: accessSecret
-      expiration: 10m
+      expiration: 30m
     refresh:
       secret: refreshSecret
       expiration: 168h
