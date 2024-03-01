@@ -8,6 +8,7 @@ import com.example.e_m_test.api.domain.wallet.Wallet;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TransferBalanceUseCase implements TransferBalanceInBound {
     private final WalletRepository walletRepository;
 
-    @Transactional
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     @Override
     public Wallet transfer(Long clientId, TransferRequestDto wallet) {
         log.info("Client with id {} wants to do transfer to another client", clientId);

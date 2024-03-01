@@ -27,6 +27,7 @@ public class UpdateClientEmailUseCase implements UpdateClientEmailInBound {
         Email target = emailRepository.findByAddress(email.getOldEmail());
 
         if (!emailRepository.existsByAddressAndClientId(email.getOldEmail(), id)) {
+            log.error("Client with id: {} does not have email which he input", id);
             throw new ObjectAlreadyExistException("Client does not have entered email. Please change it and try again");
         }
 

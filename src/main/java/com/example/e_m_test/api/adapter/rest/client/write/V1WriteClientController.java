@@ -63,6 +63,7 @@ public class V1WriteClientController {
         return ResponseEntity.ok(emailDtoMapper.mapToDto(result));
     }
 
+
     @PutMapping("/client/change-phone")
     ResponseEntity<ClientInfoDto> updatePhone(
             @Valid @RequestBody UpdateClientPhoneRequestDto request,

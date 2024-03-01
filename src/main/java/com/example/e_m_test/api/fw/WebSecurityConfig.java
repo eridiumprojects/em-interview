@@ -28,8 +28,8 @@ public class WebSecurityConfig {
 
     private static final String[] publicUrls = new String[]{
             "auth/**",
-            "swagger-ui/**",
-            "v3/api-docs/**",
+            "/swagger-ui/**",
+            "/v3/api-docs/**",
     };
     private final AuthTokenFilter jwtFilter;
 

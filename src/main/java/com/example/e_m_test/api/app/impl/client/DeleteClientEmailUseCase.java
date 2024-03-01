@@ -27,6 +27,7 @@ public class DeleteClientEmailUseCase implements DeleteClientEmailInBound {
         int valueOfClientEmails = client.getEmails().size();
 
         if (!emailRepository.existsByAddressAndClientId(email.getAddress(), id)) {
+            log.error("Client with id {} tried to delete email which does not matches him", id);
             throw new ObjectAlreadyExistException("Email " + email.getAddress() + " does not matches to client");
         }
 

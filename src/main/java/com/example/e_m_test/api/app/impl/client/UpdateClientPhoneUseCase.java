@@ -27,6 +27,7 @@ public class UpdateClientPhoneUseCase implements UpdateClientPhoneInBound {
         Phone target = phoneRepository.findByNumber(phone.getOldPhone());
 
         if (!phoneRepository.existsByNumberAndClientId(phone.getOldPhone(), id)) {
+            log.error("Client with id: {} does not have phone number which he inputs", id);
             throw new ObjectAlreadyExistException("Client does not have entered phone number. Please change it and try again");
         }
 

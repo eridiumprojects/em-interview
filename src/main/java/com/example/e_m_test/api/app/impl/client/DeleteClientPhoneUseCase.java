@@ -27,6 +27,7 @@ public class DeleteClientPhoneUseCase implements DeleteClientPhoneInBound {
         int valueOfClientPhones = client.getPhones().size();
 
         if (!phoneRepository.existsByNumberAndClientId(phone.getNumber(), id)) {
+            log.error("Client with id {} tried to delete phone number which does not matches him", id);
             throw new ObjectAlreadyExistException("Phone " + phone.getNumber() + " does not matches to client");
         }
 
