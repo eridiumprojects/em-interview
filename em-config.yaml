@@ -1,10 +1,10 @@
 _type: export
 __export_format: 4
-__export_date: 2024-03-01T18:21:08.642Z
+__export_date: 2024-03-01T19:58:43.500Z
 __export_source: insomnia.desktop.app:v8.6.1
 resources:
-  - _id: req_b5a4c1680ab24410b7ce7b259d96219c
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_6bbd49f5caa845cd89e212a1d2d437d3
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709316443156
     created: 1709316420227
     url: "{{ _.baseUrl }}/api/swagger-ui/index.html#/"
@@ -27,17 +27,17 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     parentId: null
-    modified: 1709149480550
-    created: 1709149480550
+    modified: 1709323026559
+    created: 1709323026559
     name: em_test.yaml
     description: ""
     scope: design
     _type: workspace
-  - _id: req_6121ccdca15749da8c0bf52ea9292fea
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
-    modified: 1709313144571
+  - _id: req_1b5ef0cbb5ac44b4a2c0ffaf862032f8
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709323047353
     created: 1709244975918
     url: "{{ _.baseUrl }}/api/auth/refresh"
     name: Refreshing token
@@ -69,8 +69,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_8477076e489e40609d892a897aa74247
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_329efe428fbb49c6bd406ab64d8929f3
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709313324848
     created: 1709233000568
     url: "{{ _.baseUrl }}/api/wallet/transfer"
@@ -104,8 +104,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_2ebefaa1c9be4300b82c9241632a4b23
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_4a0c2878643041cf9552212495aaaaf8
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709317173014
     created: 1709220805681
     url: "{{ _.baseUrl
@@ -139,8 +139,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_1b399bcb8a204de480ff80ddbb7cba49
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_1c21f191284a42aaae7ffe147a22bebe
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709313278895
     created: 1709215467278
     url: "{{ _.baseUrl }}/api/clients/client/delete-phone"
@@ -172,8 +172,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_1966a2b8a07048d6828800c79166d71c
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_1c81086df32b4a078069cc3f7304d32f
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709313258732
     created: 1709215490928
     url: "{{ _.baseUrl }}/api/clients/client/delete-email"
@@ -205,8 +205,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_14969d43f91c49b1b560e04837688850
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_73702621069e488b86a90a807aa83e2a
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709313239802
     created: 1709204666138
     url: "{{ _.baseUrl }}/api/clients/client/change-phone"
@@ -239,8 +239,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_3643e4a94c584c7685ed9f22695d6386
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_c3971127ab4f4fbf86f40f030dc193d4
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709313197781
     created: 1709204676659
     url: "{{ _.baseUrl }}/api/clients/client/change-email"
@@ -273,8 +273,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_21625ac4f82841729b7668072a8a0635
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_d5f58b020ddf49e3a1624c11c591798a
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709313188238
     created: 1709201318590
     url: "{{ _.baseUrl }}/api/clients/client/add-email"
@@ -306,8 +306,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_ad9a319aa5a4431daddd668142cdf54b
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_7d5b9fbee12a4314b1ed8bdc6508deb2
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709313169409
     created: 1709204094762
     url: "{{ _.baseUrl }}/api/clients/client/add-phone"
@@ -339,8 +339,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_4c72f66a2df64ce08ea6875665f6e03c
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_3d54e622f09641329af55d1e45f64979
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709237299448
     created: 1709152936304
     url: "{{ _.baseUrl }}/api/clients/client"
@@ -365,9 +365,9 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_4823d064a125443193545f61da3426e9
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
-    modified: 1709317234569
+  - _id: req_dd1ef7378d744c5f98ec2d5c0b53bf10
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709323073039
     created: 1709149590349
     url: "{{ _.baseUrl }}/api/auth/signin"
     name: Sign in
@@ -378,7 +378,7 @@ resources:
       text: |-
         {
         	"username": "eridium",
-        	"password": "eridium123",
+        	"password": "eridium123"
         }
     parameters: []
     headers:
@@ -397,8 +397,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_0d125ca204a04219a72ce317f15d7657
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: req_9667a04cbdb84b369f20a0c29fdb7394
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709316885763
     created: 1709149495132
     url: "{{ _.baseUrl }}/api/auth/signup"
@@ -451,8 +451,8 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: env_5bcbe767686e58aaa5af783e4550414d900d51d5
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: env_d91de85078dd4ff1b14700138e6614ec
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709317218949
     created: 1709149480554
     name: Base Environment
@@ -467,17 +467,17 @@ resources:
     isPrivate: false
     metaSortKey: 1709149480554
     _type: environment
-  - _id: jar_5bcbe767686e58aaa5af783e4550414d900d51d5
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
+  - _id: jar_d0718513e998438c88a0d3b7c2f43df4
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
     modified: 1709149480554
     created: 1709149480554
     name: Default Jar
     cookies: []
     _type: cookie_jar
-  - _id: spc_191a7a1db5dc417ca038f17ffde359c9
-    parentId: wrk_cb7605c6fd2c4fef93ece85ceb833c45
-    modified: 1709234462136
-    created: 1709149480551
+  - _id: spc_82bdf9d5936a4b6fa1762f1284c6d48a
+    parentId: wrk_be5e29005cba4426a5c4e5d3e0a8c39a
+    modified: 1709323026572
+    created: 1709323026570
     fileName: em_test.yaml
     contents: ""
     contentType: yaml
