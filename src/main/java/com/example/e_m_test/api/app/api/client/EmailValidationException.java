@@ -1,12 +1,9 @@
 package com.example.e_m_test.api.app.api.client;
 
-public class EmailValidationException extends RuntimeException {
-    private static final String ERROR_UPDATE = "Invalid update request for email %d";
-    private static final String ERROR_ADD = "Invalid add email request";
+import com.example.e_m_test.api.app.api.ObjectAlreadyExistException;
 
-    public EmailValidationException(String email) {
-        super(ERROR_UPDATE.formatted(email));
-    }
+public class EmailValidationException extends ObjectAlreadyExistException {
+    private static final String ERROR_ADD = "Invalid email request";
 
     public EmailValidationException() {
         super(ERROR_ADD);

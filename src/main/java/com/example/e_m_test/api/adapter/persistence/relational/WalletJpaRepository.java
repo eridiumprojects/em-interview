@@ -12,6 +12,4 @@ public interface WalletJpaRepository extends JpaRepository<Wallet, Long> {
     Optional<Wallet> findByClientId(Long id);
 
     Optional<Wallet> findByClientUsername(String username);
-
-    Boolean existsByClient(Client client);
 }

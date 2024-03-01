@@ -1,5 +1,6 @@
 package com.example.e_m_test.api.app.impl.client;
 
+import com.example.e_m_test.api.app.api.client.ClientNotFoundException;
 import com.example.e_m_test.api.app.api.client.ClientRepository;
 import com.example.e_m_test.api.app.api.client.GetClientInBound;
 import com.example.e_m_test.api.domain.client.Client;
@@ -18,6 +19,7 @@ public class GetClientUseCase implements GetClientInBound {
     @Transactional(readOnly = true)
     public Client get(Long clientId) {
         log.info("Getting client info for id {}", clientId);
-        return clientRepository.getById(clientId);
+        return clientRepository.getById(clientId)
+                .orElseThrow(() -> new ClientNotFoundException(clientId));
     }
 }

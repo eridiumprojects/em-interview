@@ -16,6 +16,7 @@ public interface EmailJpaRepository extends JpaRepository<Email, Long> {
     Boolean existsByAddress(String address);
 
     Boolean existsByClient(Client client);
+    Boolean existsByAddressAndClientId(String address, Long clientId);
 
     void deleteByAddress(String address);
 }

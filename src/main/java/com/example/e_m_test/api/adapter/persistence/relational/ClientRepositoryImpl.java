@@ -6,20 +6,21 @@ import com.example.e_m_test.api.domain.client.Client;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 @RequiredArgsConstructor
 public class ClientRepositoryImpl implements ClientRepository {
     private final ClientJpaRepository clientJpaRepository;
 
     @Override
-    public Client getByUsername(String username) {
-        return clientJpaRepository.findByUsername(username)
-                .orElseThrow(() -> new ClientNotFoundException(username));
+    public Optional<Client> getByUsername(String username) {
+        return clientJpaRepository.findByUsername(username);
     }
 
     @Override
-    public Client getById(Long id) {
-        return clientJpaRepository.findById(id).orElseThrow(() -> new ClientNotFoundException(id));
+    public Optional<Client> getById(Long id) {
+        return clientJpaRepository.findById(id);
     }
 
     @Override

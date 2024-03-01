@@ -2,10 +2,12 @@ package com.example.e_m_test.api.app.api.client;
 
 import com.example.e_m_test.api.domain.client.Client;
 
-public interface ClientRepository {
-    Client getByUsername(String username);
+import java.util.Optional;
 
-    Client getById(Long id);
+public interface ClientRepository {
+    Optional<Client> getByUsername(String username);
+
+    Optional<Client> getById(Long id);
 
     boolean existsByUsername(String username);
 

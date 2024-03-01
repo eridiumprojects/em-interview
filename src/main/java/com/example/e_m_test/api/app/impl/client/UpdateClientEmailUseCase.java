@@ -1,10 +1,8 @@
 package com.example.e_m_test.api.app.impl.client;
 
 import com.example.e_m_test.api.adapter.rest.client.dto.UpdateClientEmailRequestDto;
-import com.example.e_m_test.api.app.api.client.ClientRepository;
-import com.example.e_m_test.api.app.api.client.EmailRepository;
-import com.example.e_m_test.api.app.api.client.EmailValidationException;
-import com.example.e_m_test.api.app.api.client.UpdateClientEmailInBound;
+import com.example.e_m_test.api.app.api.ObjectAlreadyExistException;
+import com.example.e_m_test.api.app.api.client.*;
 import com.example.e_m_test.api.domain.client.Client;
 import com.example.e_m_test.api.domain.client.Email;
 import lombok.RequiredArgsConstructor;
@@ -23,11 +21,18 @@ public class UpdateClientEmailUseCase implements UpdateClientEmailInBound {
     @Override
     public Client update(Long id, UpdateClientEmailRequestDto email) {
         log.info("Client with id: {} processed to update his email on {}", id, email.getNewEmail());
-        Client client = clientRepository.getById(id);
+        Client client = clientRepository.getById(id)
+                .orElseThrow(() -> new ClientNotFoundException(id));
+
         Email target = emailRepository.findByAddress(email.getOldEmail());
 
+        if (!emailRepository.existsByAddressAndClientId(email.getOldEmail(), id)) {
+            throw new ObjectAlreadyExistException("Client does not have entered email. Please change it and try again");
+        }
+
         if (emailRepository.existsByAddress(email.getNewEmail())) {
-            throw new EmailValidationException(email.getNewEmail());
+            log.error("Client tried to update email which exists in system database");
+            throw new ObjectAlreadyExistException("Email which client want to replace, is busy by another client");
         }
         target.setAddress(email.getNewEmail());
 

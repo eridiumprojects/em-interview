@@ -1,5 +1,6 @@
 package com.example.e_m_test.api.app.impl.client;
 
+import com.example.e_m_test.api.app.api.client.ClientNotFoundException;
 import com.example.e_m_test.api.app.api.client.ClientRepository;
 import com.example.e_m_test.api.app.api.client.LoginClientInBound;
 import com.example.e_m_test.api.app.api.security.DeviceRepository;
@@ -36,8 +37,9 @@ public class LoginClientUseCase implements LoginClientInBound {
     @Transactional
     @Override
     public JwtResponse login(String username, String password, UUID deviceToken) {
-        log.info("Logging user with username {}", username);
-        Client client = clientRepository.getByUsername(username);
+        log.info("Client wants to login in system with username {}", username);
+        Client client = clientRepository.getByUsername(username)
+                .orElseThrow(() -> new ClientNotFoundException(username));
 
         if (!passwordEncoder.matches(password, client.getPassword())) {
             throw new AuthException(INVALID_PASSWORD);
@@ -58,7 +60,7 @@ public class LoginClientUseCase implements LoginClientInBound {
         refreshToken.setToken(tokens.getRefreshToken());
         refreshToken.setClient(client);
         refreshTokenRepository.save(refreshToken);
-
+        log.info("Client has been logined successfully with username {}", username);
         return tokens;
     }
 }

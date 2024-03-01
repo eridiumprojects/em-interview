@@ -31,4 +31,9 @@ public class EmailRepositoryImpl implements EmailRepository {
     public void deleteByAddress(String address) {
         emailJpaRepository.deleteByAddress(address);
     }
+
+    @Override
+    public boolean existsByAddressAndClientId(String address, Long clientId) {
+        return emailJpaRepository.existsByAddressAndClientId(address, clientId);
+    }
 }

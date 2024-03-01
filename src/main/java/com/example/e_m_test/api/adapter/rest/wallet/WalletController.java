@@ -4,6 +4,7 @@ import com.example.e_m_test.api.adapter.rest.wallet.dto.TransferRequestDto;
 import com.example.e_m_test.api.adapter.rest.wallet.dto.WalletDtoMapper;
 import com.example.e_m_test.api.adapter.rest.wallet.dto.WalletInfoDto;
 import com.example.e_m_test.api.app.api.wallet.TransferBalanceInBound;
+import com.example.e_m_test.api.app.api.wallet.WalletValidationException;
 import com.example.e_m_test.api.app.impl.security.JwtService;
 import com.example.e_m_test.api.domain.wallet.Wallet;
 import jakarta.validation.Valid;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/wallet")
 public class WalletController {
-
     private final JwtService jwtService;
     private final TransferBalanceInBound transferBalanceInBound;
     private final WalletDtoMapper walletDtoMapper;
@@ -29,7 +29,7 @@ public class WalletController {
             @Valid @RequestBody TransferRequestDto request,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            throw new RuntimeException();
+            throw new WalletValidationException();
         }
         Wallet result = transferBalanceInBound.transfer(
                 jwtService.getJwtAuth().getClientId(), request);

@@ -1,6 +1,8 @@
 package com.example.e_m_test.api.app.api.client;
 
-public class ClientNotFoundException extends RuntimeException {
+import com.example.e_m_test.api.app.api.ObjectNotFoundException;
+
+public class ClientNotFoundException extends ObjectNotFoundException {
     private static final String ERROR_MESSAGE = "Client with id %s was not found";
     private static final String ERROR_MESSAGE_USERNAME = "Client with username %s was not found";
     public ClientNotFoundException(Long userId) {

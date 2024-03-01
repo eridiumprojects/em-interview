@@ -45,7 +45,7 @@ public class SignupRequestDomainMapperImpl implements SignupRequestDomainMapper 
         wallet.setCurrentBalance(source.getInitialBalance());
 
         if (source.getInitialBalance() < 0) {
-            wallet.setInitialBalance(0L);
+            throw new ArithmeticException("Initial balance must be greater or equals 0");
         }
         client.setWallet(wallet);
 

@@ -31,4 +31,9 @@ public class PhoneRepositoryImpl implements PhoneRepository {
     public void deleteByNumber(String number) {
         phoneJpaRepository.deleteByNumber(number);
     }
+
+    @Override
+    public boolean existsByNumberAndClientId(String number, Long clientId) {
+        return phoneJpaRepository.existsByNumberAndClientId(number, clientId);
+    }
 }

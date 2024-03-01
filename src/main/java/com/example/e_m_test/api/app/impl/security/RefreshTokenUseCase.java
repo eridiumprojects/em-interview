@@ -41,9 +41,9 @@ public class RefreshTokenUseCase implements RefreshTokenInBound {
             throw new AuthException(AuthErrorMessages.SUSPICIOUS_ACTIVITY);
         }
 
-        var tokens = jwtService.generateAccessRefreshTokens(client.getUsername(), client.getId(), device.getId(), role);
+        var tokens = jwtService.generateAccessRefreshTokens(client.get().getUsername(), client.get().getId(), device.getId(), role);
         var newRefresh = new RefreshToken();
-        newRefresh.setClient(client);
+        newRefresh.setClient(client.get());
         newRefresh.setToken(tokens.getRefreshToken());
         refreshTokenRepository.save(newRefresh);
         return tokens;
