@@ -23,4 +23,4 @@ P.S Access token внутри системы действует 30 минут, �
 ## Swagger-документация
 
 Доступна по адресу: http://localhost:8080/api/swagger-ui/index.html#
-[swagger_plot1](https://github.com/eridiumprojects/em-interview/blob/master/swagger_plot1.png)
+![swagger_plot1](https://github.com/eridiumprojects/em-interview/blob/master/swagger_plot1.png)
